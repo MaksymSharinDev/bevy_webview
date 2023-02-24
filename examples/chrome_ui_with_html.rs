@@ -1,20 +1,24 @@
 use bevy::prelude::*;
 use bevy_webview::prelude::*;
-//FIXME: example rusults in a gray screen
+use rust_headless_chrome_engine::platform_impl::chrome;
+
+
+// TODO: implement the example with chrome headless engine
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
-        .add_plugin(WebviewPlugin::new().register_engine(webview_engine::headless))
+        .add_plugin(WebviewPlugin::new().register_engine(chrome::headless))
         .add_startup_system(setup)
         .run();
 }
 
 fn setup(mut commands: Commands) {
-    commands.spawn(Camera2dBundle::default())
+    commands.spawn(Camera2dBundle::default());
+
     commands.spawn(WebviewUIBundle {
         webview: Webview {
-            uri: Some(String::from("http://bevyengine.org/")),
-            color: Color::rgba_u8(35, 35, 38, 255),
+            html: Some(include_str!("ui_with_html.html").to_string()),
+            color: Color::rgb_u8(255, 228, 196),
             ..Default::default()
         },
         style: Style {

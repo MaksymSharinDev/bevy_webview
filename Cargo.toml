@@ -15,6 +15,7 @@ readme = "README.md"
 members = [
   "crates/headless_webview",
   "crates/headless_webview_engine",
+  "crates/rust_headless_chrome_engine"
 ]
 
 [dependencies]
@@ -28,7 +29,7 @@ bevy = { version = "0.9.0", features = [
 crossbeam-channel = "0.5.1"
 headless_webview = { version = "0.1.1", path = "./crates/headless_webview", features = ["protocol"] }
 headless_webview_engine = { version = "0.1.1", path = "./crates/headless_webview_engine", optional = true }
-
+rust_headless_chrome_engine = { version = "0.0.1", path= "crates/rust_headless_chrome_engine", optional = true}
 serde = { version = "1.0", features = [ "derive" ] }
 serde_json = "1.0"
 
@@ -41,4 +42,4 @@ rand = "0.8.4"
 
 [features]
 default = ["engine"]
-engine = ["headless_webview_engine"]
+engine = ["headless_webview_engine", "rust_headless_chrome_engine"]

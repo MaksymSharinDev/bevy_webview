@@ -1,0 +1,17 @@
+[package]
+name = "rust_headless_chrome_engine"
+version = "0.0.1"
+edition = "2021"
+license = "Apache-2.0 OR MIT"
+description = "Headless Chrome Webview implementation in Rust"
+
+[dependencies]
+headless_webview = { version = "0.1.1", path = "../headless_webview" }
+url = "2.2"
+log = "0.4"
+
+[target.'cfg(any( target_os = "linux", target_os = "dragonfly", target_os = "freebsd", target_os = "openbsd", target_os = "netbsd",target_os = "windows",target_os = "macos",))'.dependencies]
+  headless_chrome = "1.0.5"
+
+[dev-dependencies]
+image = { version = "0.23.14", default_features = false, features = ["png"] }
