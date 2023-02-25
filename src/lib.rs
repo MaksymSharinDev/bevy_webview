@@ -278,6 +278,8 @@ pub struct WebviewUIBundle {
     /// Describes the visibility properties of the node
     pub visibility: Visibility,
 
+    pub computed_visibility: ComputedVisibility,
+
     /// Interaction state
     pub interaction: WebviewInteraction,
 

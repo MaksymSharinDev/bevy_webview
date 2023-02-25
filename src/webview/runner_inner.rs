@@ -119,14 +119,9 @@ pub(crate) fn webview_runner_inner<T: HeadlessWindow>(
                 log::debug!("Webview {:?}: resized to {:?}", entity, size);
 
                 if let Some(w) = webviews.get_mut(&entity) {
-                    // TODO: this check can be removed after https://github.com/bevyengine/bevy/pull/3785 is merged
-                    if w.webview.window().width() as f32 != size.x
-                        || w.webview.window().height() as f32 != size.y
-                    {
-                        w.webview
-                            .resize(WindowSize::new(size.x as u32, size.y as u32))
-                            .unwrap();
-                    }
+                    w.webview
+                        .resize(WindowSize::new(size.x as u32, size.y as u32))
+                        .unwrap();
                 }
             }
 

@@ -1,4 +1,4 @@
-use bevy::prelude::*;
+use bevy::{prelude::*, render::camera::RenderTarget, window::WindowId};
 use bevy_webview::prelude::*;
 
 fn main() {
@@ -12,16 +12,18 @@ fn main() {
 fn setup(mut commands: Commands) {
     commands.spawn(Camera2dBundle::default());
 
-    commands.spawn(WebviewUIBundle {
-        webview: Webview {
-            html: Some(include_str!("ui_with_html.html").to_string()),
-            color: Color::rgb_u8(255, 228, 196),
-            ..Default::default()
-        },
-        style: Style {
-            size: Size::new(Val::Percent(30.0), Val::Percent(100.)),
-            ..Default::default()
-        },
-        ..Default::default()
-    });
-}
+    commands
+        .spawn(WebviewUIBundle {
+                webview: Webview {
+                    html: Some(include_str!("ui_with_html.html").to_string()),
+                    color: Color::rgb_u8(255, 228, 196),
+                    ..Default::default()
+                },
+                style: Style {
+                    size: Size::new(Val::Percent(30.0), Val::Percent(100.)),
+                    ..Default::default()
+                },
+                
+                ..Default::default()
+            });
+        }

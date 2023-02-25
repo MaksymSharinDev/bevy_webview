@@ -2,7 +2,6 @@ use bevy::prelude::*;
 use bevy_webview::prelude::*;
 use rust_headless_chrome_engine::platform_impl::chrome;
 
-
 // TODO: implement the example with chrome headless engine
 fn main() {
     App::new()
@@ -13,7 +12,13 @@ fn main() {
 }
 
 fn setup(mut commands: Commands) {
-    commands.spawn(Camera2dBundle::default());
+    commands.spawn(Camera2dBundle {
+        camera: Camera {
+            priority: 1,
+            ..Default::default()
+        },
+        ..Default::default()
+    });
 
     commands.spawn(WebviewUIBundle {
         webview: Webview {
