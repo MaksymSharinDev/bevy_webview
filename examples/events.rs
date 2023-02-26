@@ -44,14 +44,12 @@ fn setup(mut commands: Commands) {
     commands.insert_resource(TimeTick(Timer::new(Duration::from_millis(1_000), TimerMode::Repeating)));
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Resource, Debug)]
 pub struct LoginRequest {
     username: String,
 }
 
-impl Resource for LoginRequest {}
-
-#[derive(Serialize, Debug)]
+#[derive(Serialize, Debug, Resource)]
 pub struct AppTime {
     seconds_since_startup: f64,
 }
@@ -72,7 +70,7 @@ fn login_handler(mut login_request_events: WebviewEventReader<LoginRequest>) {
     }
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize,Resource, Debug)]
 pub struct CloseRequest;
 
 impl Resource for CloseRequest {}
@@ -89,6 +87,7 @@ fn close_handler(
     }
 }
 
+#[derive(Resource)]
 struct TimeTick(Timer);
 impl Resource for TimeTick {}
 

@@ -321,7 +321,7 @@ impl Default for Webview {
 /// Any future command added here should be available in the core API's:
 /// * https://docs.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2?view=webview2-1.0.1072.54
 /// * https://webkitgtk.org/reference/webkit2gtk/stable/WebKitWebView.html#webkit-web-view-reload
-#[derive(Component, Serialize, Debug, Clone)]
+#[derive(Component, Serialize, Resource, Debug, Clone)]
 pub enum WebviewCommand {
     /// Navigate to the given URI
     LoadUri(String),

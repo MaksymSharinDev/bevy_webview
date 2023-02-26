@@ -10,7 +10,8 @@ fn main() {
 }
 
 fn setup(mut commands: Commands) {
-    commands.spawn(Camera2dBundle::default())
+    commands.spawn(Camera2dBundle::default());
+
     commands.spawn(WebviewUIBundle {
         webview: Webview {
             uri: Some(String::from("http://bevyengine.org/")),
